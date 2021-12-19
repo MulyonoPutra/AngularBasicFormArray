@@ -1,0 +1,31 @@
+<div [formGroup]="form">
+	<div>
+		<input type="text" formControlName="name">
+  </div>
+  <div>
+    <button (click)="addNewAddressGroup()">Add</button>
+  </div>
+
+    <div *ngFor="let addressGroup of form.get('address').controls;let i = index" [formGroup]="addressGroup">
+
+      form No : {{i}}
+        <div>
+          street <input formControlName="street">
+        </div>
+
+         <div>
+          city <input formControlName="city">
+        </div>
+        <button (click)="deleteAddressGroup(i)" >Delete - {{i}}</button>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+result <br>
+
+<pre>
+{{form.value | json}}
+</pre>
